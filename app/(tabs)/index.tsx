@@ -1,11 +1,10 @@
 import { Text, View } from "react-native";
+import { Link } from "expo-router";
 
 export default function Index() {
   return (
     <View className="flex-1 items-center justify-center ">
-      <Text className="color-black ">
-        Edit app/index.tsx to edit this screen.
-      </Text>
+      <Text className="text-5xl text-dark-200 font-bold">Bem vindo</Text>
     </View>
   );
 }

@@ -4,7 +4,7 @@ import { View, Text, ActivityIndicator, FlatList, Image } from "react-native";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
 
-import useFetch from "@/services/useFetch";
+import useFetch from "@/services/usefetch";
 import { fetchMovies } from "@/services/api";
 import { updateSearchCount } from "@/services/appwrite";
 
@@ -72,7 +72,7 @@ const Search = () => {
 
             <View className="my-5">
               <SearchBar
-                placeholder="Search for a movie"
+                placeholder="Procure por um filme"
                 value={searchQuery}
                 onChangeText={handleSearch}
               />
@@ -108,8 +108,8 @@ const Search = () => {
             <View className="mt-10 px-5">
               <Text className="text-center text-gray-500">
                 {searchQuery.trim()
-                  ? "No movies found"
-                  : "Start typing to search for movies"}
+                  ? "Nenhum Filme Encontrado"
+                  : "Pesquise por um Filme"}
               </Text>
             </View>
           ) : null

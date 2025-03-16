@@ -11,12 +11,17 @@ const database = new Databases(client);
 
 export const updateSearchCount = async (query: string, movie: Movie) => {
   try {
+    // Fazendo a consulta uma vez e armazenando em uma variável
     const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
       Query.equal("searchTerm", query),
     ]);
 
-    if (result.documents.length > 0) {
-      const existingMovie = result.documents[0];
+    // Armazenando os documentos em uma variável para evitar leituras repetidas
+    const documents = result.documents;
+
+    if (documents.length > 0) {
+      const existingMovie = documents[0];
+      // Atualizando o documento
       await database.updateDocument(
         DATABASE_ID,
         COLLECTION_ID,
@@ -26,6 +31,7 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
         }
       );
     } else {
+      // Criando um novo documento se não encontrado
       await database.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
         searchTerm: query,
         movie_id: movie.id,
@@ -44,14 +50,19 @@ export const getTrendingMovies = async (): Promise<
   TrendingMovie[] | undefined
 > => {
   try {
+    // Fazendo a consulta para pegar os documentos
     const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
       Query.limit(5),
       Query.orderDesc("count"),
     ]);
 
-    return result.documents as unknown as TrendingMovie[];
+    // Armazenando os documentos para evitar a leitura repetida
+    const documents = result.documents;
+
+    // Retornando os documentos processados como TrendingMovie
+    return documents as unknown as TrendingMovie[];
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching trending movies:", error);
     return undefined;
   }
 };

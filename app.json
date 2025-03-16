@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "app-movies-react-native",
-    "slug": "app-movies-react-native",
+    "name": "rn-movie-app",
+    "slug": "rn-movie-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
-    "scheme": "Filmes",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -15,8 +15,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.natanaelmelo.appmoviesreactnative"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +36,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "aba89d6b-2571-477d-86ae-99295628189e"
+      }
     }
   }
 }
